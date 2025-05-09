@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/Logo/Logo.png" type="image/x-icon">
+    <link rel="icon" href="img/Logo/Logo.png" type="image/x-icon">
+    <title>Sweet Crumbs - Spesialis Kue Tradisional & Modern</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #8B4513;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #A0522D;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #A0522D;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #8B4513;
+        }
+
+        /* Navbar Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #A0522D;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #A0522D;
+        }
+
+        /* Hero Section */
+        #home {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/Header/header.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        /* About Section */
+        #about {
+            background-color: #f9f9f9;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Products Section */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #A0522D;
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        /* Testimonials Section */
+        #testimonials {
+            background-color: #f9f9f9;
+        }
+
+        .testimonials-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 30px;
+            padding: 20px 0;
+            scroll-snap-type: x mandatory;
+        }
+
+        .testimonial-card {
+            min-width: 300px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            scroll-snap-align: start;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* Order Section */
+        #order {
+            text-align: center;
+        }
+
+        .order-steps {
+            display: flex;
+            justify-content: space-around;
+            margin: 50px 0;
+            flex-wrap: wrap;
+        }
+
+        .step {
+            width: 200px;
+            margin: 10px;
+        }
+
+        .step-icon {
+            font-size: 2.5rem;
+            color: #A0522D;
+            margin-bottom: 15px;
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: #f9f9f9;
+        }
+
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-info p {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info i {
+            margin-right: 10px;
+            color: #A0522D;
+        }
+
+        .contact-form {
+            flex: 1;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form-group textarea {
+            height: 150px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #8B4513;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .social-links {
+            margin: 20px 0;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            color: white;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #f1c40f;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .about-content,
+            .contact-container {
+                flex-direction: column;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+    <!-- Header & Navbar -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Sweet Crumbs</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#about">Tentang Kami</a></li>
+                    <li><a href="#products">Produk</a></li>
+                    <li><a href="#testimonials">Testimoni</a></li>
+                    <li><a href="#order">Cara Pesan</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Kue Tradisional & Modern Berkualitas</h1>
+                <p>Dibuat dengan bahan premium dan resep turun temurun untuk memberikan cita rasa autentik yang
+                    memanjakan lidah Anda.</p>
+                <a href="#products" class="btn">Lihat Produk Kami</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>Tentang Kami</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Sweet Crumbs - Spesialis Kue Tradisional</h3>
+                    <p>Kami adalah suatu yang mengkhususkan diri dalam pembuatan berbagai macam kue, mulai dari
+                        kue tradisional khas Indonesia hingga brownies modern yang digemari semua kalangan.
+
+                        Dengan menggunakan bahan-bahan pilihan dan proses pembuatan yang penuh ketelitian, kami
+                        berkomitmen untuk menghadirkan cita rasa terbaik dalam setiap gigitan.
+
+                        Visi kami adalah melestarikan kekayaan rasa kue tradisional Indonesia sekaligus terus berinovasi
+                        dengan sentuhan modern, agar setiap produk kami mampu menjembatani selera lintas generasi.</p>
+                    <a href="#contact" class="btn">Hubungi Kami</a>
+                </div>
+                <div class="about-image">
+                    <img src="img/logo/Logo.png" alt="Proses Pembuatan Kue">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products">
+        <div class="container">
+            <h2>Varian Kue</h2>
+            <p style="text-align: center; margin-bottom: 30px;">"Manjakan lidahmu dengan aneka pilihan kue lezat kami,
+                dibuat dengan rasa autentik dan kualitas terbaik di setiap gigitannya."</p>
+
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="img/Produk Kami/lapis legit.jpg" alt="Kue Lapis">
+                    </div>
+                    <div class="product-info">
+                        <h3>Kue Lapis Legit</h3>
+                        <p>Kue lapis legit dengan 18 lapisan, lembut dan kaya rasa.</p>
+                        <div class="price">Rp 120.000/pcs</div>
+                        <a href="#order" class="btn">Pesan Sekarang</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="img/Produk Kami/bolu.jpg" alt="Bolu Pandan">
+                    </div>
+                    <div class="product-info">
+                        <h3>Bolu Pandan Keju</h3>
+                        <p>Bolu pandan lembut dengan taburan keju parut di atasnya.</p>
+                        <div class="price">Rp 85.000/pcs</div>
+                        <a href="#order" class="btn">Pesan Sekarang</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="img/Produk Kami/klepon.jpg" alt="Klepon">
+                    </div>
+                    <div class="product-info">
+                        <h3>Klepon Premium</h3>
+                        <p>Klepon dengan gula merah kualitas premium dan kelapa parut segar.</p>
+                        <div class="price">Rp 35.000/10pcs</div>
+                        <a href="#order" class="btn">Pesan Sekarang</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="img/Produk Kami/dadar gulung.jpg" alt="Dadar Gulung">
+                    </div>
+                    <div class="product-info">
+                        <h3>Dadar Gulung Isi Kelapa</h3>
+                        <p>Kulit dadar gulung yang lembut dengan isian kelapa manis.</p>
+                        <div class="price">Rp 40.000/10pcs</div>
+                        <a href="#order" class="btn">Pesan Sekarang</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="img/Produk Kami/brownies.jpg" alt="Brownies">
+                    </div>
+                    <div class="product-info">
+                        <h3>Brownies Kukus Coklat</h3>
+                        <p>Brownies kukus lembut dengan toping coklat leleh.</p>
+                        <div class="price">Rp 130.000/pcs</div>
+                        <a href="#order" class="btn">Pesan Sekarang</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="img/Produk Kami/onde onde.jpg" alt="Onde-onde">
+                    </div>
+                    <div class="product-info">
+                        <h3>Onde-onde Wijen</h3>
+                        <p>Onde-onde dengan wijen renyah dan isi kacang hijau lembut.</p>
+                        <div class="price">Rp 45.000/10pcs</div>
+                        <a href="#order" class="btn">Pesan Sekarang</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <div class="container">
+            <h2>Apa Kata Pelanggan Kami</h2>
+            <p style="text-align: center; margin-bottom: 30px;">Testimoni dari pelanggan yang sudah mencoba produk kami
+            </p>
+
+            <div class="testimonials-container">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Kue lapis legitnya benar-benar enak dan teksturnya sempurna. Rasanya seperti buatan nenek saya
+                        dulu. Sudah pesan berkali-kali dan selalu puas!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah Wijaya</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Bolu pandan kejunya selalu jadi andalan untuk acara keluarga. Lembut dan tidak terlalu manis.
+                        Anak-anak dan orang tua sama-sama suka."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+
+                        </div>
+                        <div class="author-info">
+                            <h4>Budi Santoso</h4>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Kleponnya benar-benar spesial! Gula merahnya melimpah dan kelapanya segar. Sudah mencoba banyak
+                        tempat, tapi yang ini paling enak."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+
+                        </div>
+                        <div class="author-info">
+                            <h4>Dewi Lestari</h4>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Pelayanan sangat memuaskan dan pengemasan rapi. Kuenya selalu fresh karena dibuat setelah ada
+                        pesanan. Recommended banget!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+
+                        </div>
+                        <div class="author-info">
+                            <h4>Rudi Hartono</h4>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Section -->
+    <section id="order">
+        <div class="container">
+            <h2>Cara Memesan</h2>
+            <p style="text-align: center; margin-bottom: 30px;">Proses pemesanan yang mudah dan cepat</p>
+
+            <div class="order-steps">
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>1. Pilih Produk</h3>
+                    <p>Pilih kue favorit Anda dari daftar produk kami</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>2. Hubungi Kami</h3>
+                    <p>Hubungi via WhatsApp, telepon, atau formulir kontak</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3>3. Konfirmasi Pembayaran</h3>
+                    <p>Lakukan pembayaran dan konfirmasi ke kami</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>4. Pengiriman</h3>
+                    <p>Kue akan dikirim sesuai alamat dan waktu yang disepakati</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="#contact" class="btn">Pesan Sekarang</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Hubungi Kami</h2>
+            <p style="text-align: center; margin-bottom: 30px;">Silakan hubungi kami untuk pemesanan atau pertanyaan</p>
+
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Informasi Kontak</h3>
+                    <p><i class="fab fa-whatsapp"></i> 085272396708 (WhatsApp)</p>
+                    <p><i class="fas fa-envelope"></i> syifanadaffa@gmail.com</p>
+                    <p><i class="fas fa-clock"></i> Buka setiap hari 08.00 - 20.00 WIB</p>
+
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3>Kirim Pesan</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Nama Lengkap</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Nomor Telepon</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Pesan</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+        <div class="container">
+            <h2>Pertanyaan yang Sering Diajukan</h2>
+            <div style="margin-bottom: 30px;">
+                <h3>1. Apakah bisa pesan dalam jumlah besar untuk acara?</h3>
+                <p>Tentu bisa! Untuk pesanan dalam jumlah besar (>50 pcs), harap menghubungi kami minimal 3 hari
+                    sebelumnya untuk memastikan ketersediaan bahan dan waktu pembuatan.</p>
+            </div>
+
+            <div style="margin-bottom: 30px;">
+                <h3>2. Bagaimana cara pembayaran?</h3>
+                <p>Kami menerima pembayaran via transfer, e-wallet (OVO, GoPay, Dana), atau
+                    cash on delivery (COD) untuk area tertentu.</p>
+            </div>
+
+            <div style="margin-bottom: 30px;">
+                <h3>3. Apakah kue bisa tahan berapa lama?</h3>
+                <p>Kue tanpa pengawet biasanya tahan 2-3 hari di suhu ruang. Beberapa kue seperti lapis legit bisa
+                    tahan hingga 1 minggu jika disimpan di kulkas.</p>
+            </div>
+
+            <div style="margin-bottom: 30px;">
+                <h3>4. Apakah menerima pesanan kue custom?</h3>
+                <p>Ya, kami menerima pesanan kue dengan desain custom. Silakan diskusikan kebutuhan Anda melalui
+                    kontak yang tersedia.</p>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="logo" style="color: white; margin-bottom: 20px;">Sweet Crumbs
+            </div>
+            <p>Spesialis Kue Tradisional & Modern Berkualitas</p>
+
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+
+            <p style="margin-top: 20px;">&copy; 2025 Sweet Crumbs
+                . All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Change navbar style on scroll
+        window.addEventListener('scroll', function () {
+            const header = document.querySelector('header');
+            header.classList.toggle('sticky', window.scrollY > 0);
+        });
+    </script>
+</body>
+
+</html>
